@@ -1,28 +1,9 @@
-// Drag & Drop Interfaces
-interface Draggable {
-  dragStartHandler(event: DragEvent): void;
-  dragEndHandler(event: DragEvent): void;
-}
-interface DragTarget {
-  dragOverHandler(event: DragEvent): void;
-  dropHandler(event: DragEvent): void;
-  dragLeaveHandler(event: DragEvent): void;
-}
+//imports
+/// <reference path="drag-drop-interfaces.ts" />
+/// <reference path="project-model.ts" />
+namespace App {
 
-//  Project Type
-enum ProjectStatus {
-  Active,
-  Finished,
-}
-class Project {
-  constructor(
-    public id: string,
-    public title: string,
-    public description: string,
-    public people: number,
-    public status: ProjectStatus
-  ) {}
-}
+
 
 // listener type
 type Listener<T> = (items: T[]) => void;
@@ -43,7 +24,6 @@ class ProjectState extends State<Project> {
   private constructor() {
     super();
   }
-
   static getInstance() {
     if (this.instance) {
       return this.instance;
@@ -341,6 +321,8 @@ class ProjectInput extends Component<HTMLDivElement, HTMLFormElement> {
 }
 
 // creating class
-const projectInput = new ProjectInput();
-const activeProjectList = new ProjectList("active");
-const finishedProjectList = new ProjectList("finished");
+new ProjectInput();
+new ProjectList("active");
+new ProjectList("finished");
+
+}
